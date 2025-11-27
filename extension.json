@@ -1,0 +1,29 @@
+{
+	"name": "ChineseVariantConverter",
+	"version": "0.1.0",
+	"author": "[https://www.sizau.com/ sizau]",
+	"url": "https://github.com/sizau/mediawiki-extensions-ChineseVariantConverter",
+	"descriptionmsg": "chinesevariantconverter-desc",
+	"license-name": "WTFPL",
+	"type": "other",
+	"requires": {
+		"MediaWiki": ">= 1.35.0"
+	},
+	"MessagesDirs": {
+		"ChineseVariantConverter": [
+			"i18n"
+		]
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\ChineseVariantConverter\\": "includes/"
+	},
+	"HookHandlers": {
+		"main": {
+			"class": "MediaWiki\\Extension\\ChineseVariantConverter\\Hooks"
+		}
+	},
+	"Hooks": {
+		"SetupAfterCache": "main"
+	},
+	"manifest_version": 2
+}
