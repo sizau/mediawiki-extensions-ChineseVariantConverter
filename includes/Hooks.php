@@ -19,10 +19,13 @@ class Hooks implements SetupAfterCacheHook {
 		
 		$converterList = $property->getValue( $factory );
 		$zhVariants = [ 'zh-hans', 'zh-hant', 'zh-cn', 'zh-tw', 'zh-hk', 'zh-mo', 'zh-sg', 'zh-my' ];
-		$zhConverterSpec = [ 'class' => \ZhConverter::class ];
 		
 		foreach ( $zhVariants as $variant ) {
-			$converterList[$variant] = $zhConverterSpec;
+			$converterList[$variant] = [
+				'factory' => function ( $langObj ) {
+					return new VariantZhConverter( $langObj, $langObj->getCode() );
+				}
+			];
 		}
 		
 		$property->setValue( $factory, $converterList );
